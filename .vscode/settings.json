@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xlocnum": "cpp",
+        "xutility": "cpp",
+        "deque": "cpp",
+        "initializer_list": "cpp",
+        "queue": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "ostream": "cpp",
+        "cmath": "cpp",
+        "algorithm": "cpp",
+        "xiosbase": "cpp"
+    }
+}
