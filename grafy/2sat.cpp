@@ -11,34 +11,25 @@ class TwoSat {  //ZEPSUTE NIE UŻYWAĆ
         for (auto v : w) {
             int v1 = v.first < 0 ? 2 * (-v.first) + 1 : 2 * v.first;
             int v2 = v.second < 0 ? 2 * (-v.second) + 1 : 2 * v.second;
-            int n1 = v1 % 2 == 0 ? v1 + 1 : v1 - 1;
-            int n2 = v2 % 2 == 0 ? v2 + 1 : v2 - 1;
+            int n1 = neg(v1);
+            int n2 = neg(v2);
             g[n1].push_back(v2);
             g[n2].push_back(v1);
             gRev[v2].push_back(n1);
             gRev[v1].push_back(n2);
         }
 
-        SSS s(g, gRev, true);
-        vector<bool> was(2 * n);
-        int found = 0;
-        while (!s.stackTopo.empty() && found < n) {
-            int act = s.stackTopo.top();
-            s.stackTopo.pop();
-            for (int v : s.sss[act]) {
-                found++;
-                if (v % 2 == 0) {
-                    if (was[v + 1]) return;
-                    was[v] = true;
-                    res.push_back(v / 2);
-                } else {
-                    if (was[v - 1]) return;
-                    was[v] = true;
-                }
-            }
-        }
-
+        SSS s(g, gRev);
+        for (int i = 0; i < g.size(); i++)
+            if (s.sNum[i] == s.sNum[neg(i)]) {
+                can = false;
+                return;
+            } else if (i % 2 == 0 && s.sNum[i] > s.sNum[neg(i)])
+                res.push_back(i / 2);
         can = true;
+    }
+    int neg(int i) {
+        return i % 2 == 0 ? i + 1 : i - 1;
     }
 };
 

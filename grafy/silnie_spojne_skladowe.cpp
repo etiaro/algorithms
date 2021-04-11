@@ -21,9 +21,7 @@ class SSS {
     vector<int> sNum;         //num of SSS for every vert
     vector<vector<int>> sG;   //graph of SSS
     vector<int> sGWe;         //st. wejscia grafu sG
-    stack<int> stackTopo;
-    bool make2SatStack;
-    SSS(vector<vector<int>>& g, vector<vector<int>>& gRev, bool make2SatStack) : g(&g), gRev(&gRev) {
+    SSS(vector<vector<int>>& g, vector<vector<int>>& gRev) : g(&g), gRev(&gRev) {
         s = stack<int>();
         was = vector<bool>(g.size());
         for (int i = 0; i < g.size(); i++)
@@ -38,8 +36,6 @@ class SSS {
             int act = s.top();
             s.pop();
             if (sNum[act] != -1) continue;
-            if (make2SatStack)
-                stackTopo.push(sss.size());
             sss.push_back(vector<int>());
             sG.push_back(vector<int>());
             sGWe.push_back(0);
@@ -80,6 +76,6 @@ int main() {
         gRev[b].push_back(a);
     }
 
-    SSS s(g, gRev, false);
+    SSS s(g, gRev);
     cout << s.sss.size();
 }
