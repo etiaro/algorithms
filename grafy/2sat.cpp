@@ -2,10 +2,7 @@
 using namespace std;
 #include "silnie_spojne_skladowe.cpp"  //copy here SSS class
 
-//schemat dla algorytmów,
-//raczej stworzony do szybkiego kopiowania i testowania
-
-class TwoSat {
+class TwoSat {  //ZEPSUTE NIE UŻYWAĆ
    public:
     vector<int> res;
     bool can = false;
